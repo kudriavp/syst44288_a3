@@ -10,12 +10,52 @@ Professor: Christina R.
 #include <stdlib.h>
 #include <pthread.h>
 
-int minv, maxv, avgv;
 int arrSize = 0;
+int minv, maxv, avgv;
 
 void *mathAverage(void *arg);
 void *mathMin(void *arg);
 void *mathMax(void *arg);
+/*Calc min*/
+void *mathMin(void *arg)
+{
+
+    minv = arr[0];
+    int *arr = (int*)arg;
+    int i;
+    for(i=1; i<arrSize; i++)
+    {
+        if(minv > arr[i])
+        minv = arr[i];
+    }
+    pthread_exit(0);
+}
+/*Calc max*/
+void *mathMax(void *arg)
+{
+    maxv = arr[0];
+    int *arr = (int*)arg;
+    int i;  
+    for(i=1; i<arrSize; i++)
+    {
+        if(maxv < arr[i])
+        maxv = arr[i];
+    }
+    pthread_exit(0);
+}
+/*Calc average*/
+void *mathAverage(void *arg)
+{
+    int sum = 0;
+    int *arr = (int*)arg;
+    int i;
+    for(i=0; i<arrSize; i++)
+    {
+        sum += arr[i];
+    }
+    avgv = sum/arrSize;
+    pthread_exit(0);
+}
 
 int main(int c, char *vals[])
 {
@@ -42,43 +82,4 @@ int main(int c, char *vals[])
     printf("The average value is %d\n", avgv);
     printf("The minimum value is %d\n", minv);
     printf("The maximum value is %d\n", maxv);
-}
-
-void *mathMin(void *arg)
-{
-    int i;
-    int *arr = (int*)arg;
-    minv = arr[0];
-    for(i=1; i<arrSize; i++)
-    {
-        if(minv > arr[i])
-        minv = arr[i];
-    }
-    pthread_exit(0);
-}
-
-void *mathMax(void *arg){
-
-    int i;
-    int *arr = (int*)arg;
-    maxv = arr[0];
-    for(i=1; i<arrSize; i++)
-    {
-        if(maxv < arr[i])
-        maxv = arr[i];
-    }
-    pthread_exit(0);
-}
-
-void *mathAverage(void *arg)
-{
-    int *arr = (int*)arg;
-    int i;
-    int sum = 0;
-    for(i=0; i<arrSize; i++)
-    {
-        sum += arr[i];
-    }
-    avgv = sum/arrSize;
-    pthread_exit(0);
 }
