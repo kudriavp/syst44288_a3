@@ -18,16 +18,16 @@ public class EchoClient
     {
         try (Socket s = new Socket("127.0.0.1",7777)) 
         {
-            //Declare variables
+            /*Declare variables*/
             String line;
             Scanner scanner;
             String scan;
             
-            //Open streams
+            /*Open streams*/
             BufferedReader dis = new BufferedReader(new InputStreamReader(s.getInputStream()));
             PrintWriter dos = new PrintWriter(s.getOutputStream(), true);
 
-            //Scan of user input and send it to the server. Print server response
+            /*Scan of user input and send it to the server. Print server response*/
             scanner = new Scanner(System.in);
             while(!".".equals(scan = scanner.nextLine()))
             {

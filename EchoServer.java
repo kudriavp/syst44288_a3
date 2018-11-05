@@ -18,11 +18,11 @@ public class EchoServer
 	{
 		try
 		{
-			//Open the port
+			/*Open the port*/
 			ServerSocket ss = new ServerSocket(7777);
 			while (true)
 			{
-				//Accept new client connection
+				/*Accept new client connection*/
 				new ClientConnection(ss.accept());
 			}
 		}
@@ -53,7 +53,7 @@ class ClientConnection extends Thread
                 PrintWriter dos = new PrintWriter(client.getOutputStream(),true);
                 
                 String userInput;
-                //Read input and send it back to the client
+                /*Read input and send it back to the client*/
                 while (null != (userInput = dis.readLine()))
                 {
                     dos.println("Server: " + userInput);
