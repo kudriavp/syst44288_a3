@@ -3,6 +3,7 @@ SYST44288
 November 4, 2018
 Students: Pavel K, Herit G
 Professor: Christina R.
+gcc -pthread -o stats stats.c
 */
 
 #include <stdio.h>
@@ -19,9 +20,8 @@ void *mathMax(void *arg);
 /*Calc min*/
 void *mathMin(void *arg)
 {
-
-    minv = arr[0];
     int *arr = (int*)arg;
+    minv = arr[0];
     int i;
     for(i=1; i<arrSize; i++)
     {
@@ -33,8 +33,8 @@ void *mathMin(void *arg)
 /*Calc max*/
 void *mathMax(void *arg)
 {
-    maxv = arr[0];
     int *arr = (int*)arg;
+    maxv = arr[0];
     int i;  
     for(i=1; i<arrSize; i++)
     {
@@ -46,8 +46,8 @@ void *mathMax(void *arg)
 /*Calc average*/
 void *mathAverage(void *arg)
 {
-    int sum = 0;
     int *arr = (int*)arg;
+    int sum = 0;
     int i;
     for(i=0; i<arrSize; i++)
     {
