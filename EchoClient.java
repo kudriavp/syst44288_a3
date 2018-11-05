@@ -1,7 +1,7 @@
 /*
 SYST44288
-October 5, 2018
-Students: Pavel K, Herit G
+November 4, 2018
+Students: Pavel K., Herit G.
 Professor: Christina R.
 */
    
